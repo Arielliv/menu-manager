@@ -8,6 +8,7 @@ namespace Ex04.Menus.Interfaces
         protected string m_Title { get; set; }
         protected MenuItem m_ParentMenuItem { get; set; }
         protected readonly List<MenuItem> r_ChildrenMenuItems;
+        protected MenuItem m_RootMenuIteam;
 
         public MenuItem(string i_Title)
         {
@@ -26,11 +27,6 @@ namespace Ex04.Menus.Interfaces
             this.Show();
         }
 
-        public void setRootMenuItemTitle(string i_Title)
-        {
-            this.r_ChildrenMenuItems[0].m_Title = i_Title;
-        }
-
         public void AddMenuItemToList(MenuItem i_NewMenuItem)
         {
             this.r_ChildrenMenuItems.Add(i_NewMenuItem);
@@ -38,12 +34,17 @@ namespace Ex04.Menus.Interfaces
 
         private void showMenu()
         {
-            int menuItemCounter = 0;
+            int menuItemCounter = 1;
 
             foreach (MenuItem currentMenueItem in this.r_ChildrenMenuItems)
             {
                 Console.WriteLine($"{menuItemCounter} -> {currentMenueItem}");
                 menuItemCounter++;
+            }
+
+            if (this.m_RootMenuIteam != null)
+            {
+                Console.WriteLine($"0 -> {this.m_RootMenuIteam}");
             }
         }
 
@@ -90,8 +91,8 @@ namespace Ex04.Menus.Interfaces
             }
             else
             {
-                this.r_ChildrenMenuItems[userChoice].m_ParentMenuItem = this;
-                this.r_ChildrenMenuItems[userChoice].OnMenuItemChosen();
+                this.r_ChildrenMenuItems[userChoice - 1].m_ParentMenuItem = this;
+                this.r_ChildrenMenuItems[userChoice - 1].OnMenuItemChosen();
             }
         }
     }

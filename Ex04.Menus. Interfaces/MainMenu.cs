@@ -4,14 +4,14 @@
     {
         private const string k_ExitTitle = "Exit";
 
-        public MainMenu(string i_Title): base(i_Title)
+        public MainMenu(string i_Title) : base(i_Title)
         {
-            this.addRootMenuItem();
+            this.setRootMenuItem();
         }
 
-        private void addRootMenuItem()
+        private void setRootMenuItem()
         {
-            base.r_ChildrenMenuItems.Add(new MenuItem(k_ExitTitle));
+            base.m_RootMenuIteam = new MenuItem(k_ExitTitle);
         }
     }
 }

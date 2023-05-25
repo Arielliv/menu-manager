@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CountSpaceChoice.cs" />
+    <Compile Include="MenuByDelegate.cs" />
     <Compile Include="MenuByInterface.cs" />
     <Compile Include="MenuOptions.cs" />
     <Compile Include="Program.cs" />

@@ -1,8 +1,8 @@
-﻿using Ex04.Menus.Interfaces;
+﻿using Ex04.Menus.Delegates;
 
 namespace Ex04.Menus.Test
 {
-    public class MenuByInterface
+    public class MenuByDelegates
     {
         private MainMenu m_MainMenu;
 
@@ -14,13 +14,13 @@ namespace Ex04.Menus.Test
 
         private void initMainMenu()
         {
-            this.m_MainMenu = new MainMenu("Interface Main menu");
+            this.m_MainMenu = new MainMenu("Delegates Main menu");
             Menu ShowDateTimeMenuItem = new Menu("Show Date/Time");
             MenuActionItem showDateActionItem = new MenuActionItem("Show Date");
             MenuActionItem showTimeActionItem = new MenuActionItem("Show Time");
 
-            showDateActionItem.AddActionItemNotifier(new ShowDateChoice());
-            showTimeActionItem.AddActionItemNotifier(new ShowTimeChoice());
+            showDateActionItem.Chosen += showDate_Chosen;
+            showTimeActionItem.Chosen += showTime_Chosen;
             ShowDateTimeMenuItem.AddMenuItemToList(showDateActionItem);
             ShowDateTimeMenuItem.AddMenuItemToList(showTimeActionItem);
 
@@ -28,13 +28,33 @@ namespace Ex04.Menus.Test
             MenuActionItem showVersionActionItem = new MenuActionItem("Show Version");
             MenuActionItem countSpacesActionItem = new MenuActionItem("Count Spaces");
 
-            showVersionActionItem.AddActionItemNotifier(new ShowVersionChoice());
-            countSpacesActionItem.AddActionItemNotifier(new CountSpaceChoice());
+            showVersionActionItem.Chosen += showVersion_Chosen;
+            countSpacesActionItem.Chosen += countSpace_Chosen;
             VersionAndSpacesMenuItem.AddMenuItemToList(showVersionActionItem);
             VersionAndSpacesMenuItem.AddMenuItemToList(countSpacesActionItem);
 
             this.m_MainMenu.AddMenuItemToList(ShowDateTimeMenuItem);
             this.m_MainMenu.AddMenuItemToList(VersionAndSpacesMenuItem);
+        }
+
+        private static void countSpace_Chosen(MenuItem i_MenuItem)
+        {
+            MenuOptions.CountSpaces();
+        }
+
+        private static void showTime_Chosen(MenuItem i_MenuItem)
+        {
+            MenuOptions.ShowTime();
+        }
+
+        private static void showVersion_Chosen(MenuItem i_MenuItem)
+        {
+            MenuOptions.ShowVersion();
+        }
+
+        private static void showDate_Chosen(MenuItem i_MenuItem)
+        {
+            MenuOptions.ShowDate();
         }
     }
 }
