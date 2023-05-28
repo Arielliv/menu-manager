@@ -6,7 +6,7 @@ namespace Ex04.Menus.Test
     {
         private MainMenu m_MainMenu;
 
-        public void showMenu()
+        public void ShowMenu()
         {
             this.initMainMenu();
             this.m_MainMenu.Show();
@@ -23,7 +23,6 @@ namespace Ex04.Menus.Test
             showTimeActionItem.AddActionItemNotifier(new ShowTimeChoice());
             ShowDateTimeMenuItem.AddMenuItemToList(showDateActionItem);
             ShowDateTimeMenuItem.AddMenuItemToList(showTimeActionItem);
-
             Menu VersionAndSpacesMenuItem = new Menu("Version and Spaces");
             MenuActionItem showVersionActionItem = new MenuActionItem("Show Version");
             MenuActionItem countSpacesActionItem = new MenuActionItem("Count Spaces");
@@ -32,7 +31,6 @@ namespace Ex04.Menus.Test
             countSpacesActionItem.AddActionItemNotifier(new CountSpaceChoice());
             VersionAndSpacesMenuItem.AddMenuItemToList(showVersionActionItem);
             VersionAndSpacesMenuItem.AddMenuItemToList(countSpacesActionItem);
-
             this.m_MainMenu.AddMenuItemToList(ShowDateTimeMenuItem);
             this.m_MainMenu.AddMenuItemToList(VersionAndSpacesMenuItem);
         }

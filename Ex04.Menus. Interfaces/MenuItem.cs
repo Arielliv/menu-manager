@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Ex04.Menus.Interfaces
 {
-    public class MenuItem : IMenuItem
+    public class MenuItem
     {
-        protected string m_Title { get; set; }
-        protected MenuItem m_ParentMenuItem { get; set; }
+        protected string m_Title;
+        protected MenuItem m_ParentMenuItem;
         protected readonly List<MenuItem> r_ChildrenMenuItems;
         protected MenuItem m_RootMenuIteam;
 
@@ -15,6 +15,18 @@ namespace Ex04.Menus.Interfaces
             this.m_Title = i_Title;
             this.m_ParentMenuItem = null;
             this.r_ChildrenMenuItems = new List<MenuItem>();
+        }
+
+        protected string Title
+        {
+            get { return this.m_Title; }
+            set { this.m_Title = value; }
+        }
+
+        protected MenuItem ParentMenuItem
+        {
+            get { return this.m_ParentMenuItem; }
+            set { this.m_ParentMenuItem = value; }
         }
 
         public override string ToString()
@@ -57,7 +69,6 @@ namespace Ex04.Menus.Interfaces
             while (!isValidChoice)
             {
                 requestInput = Console.ReadLine();
-
                 if (int.TryParse(requestInput, out request) && (request >= 0 || request <= this.r_ChildrenMenuItems.Count))
                 {
                     isValidChoice = true;

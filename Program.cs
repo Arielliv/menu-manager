@@ -6,8 +6,8 @@
         {
             MenuByInterface menuByInterface = new MenuByInterface();
             MenuByDelegates menuByDelegates = new MenuByDelegates();
-            menuByInterface.showMenu();
-            menuByDelegates.showMenu();
+            menuByInterface.ShowMenu();
+            menuByDelegates.ShowMenu();
         }
     }
 }
